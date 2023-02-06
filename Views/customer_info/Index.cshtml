@@ -1,0 +1,88 @@
+﻿@model IEnumerable<MVC_TASK3.Models.customer_info>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("New Customer", "Create", null, new { @class = "btn btn-primary" })
+</p>
+@using (Html.BeginForm("ser1", "ser"))
+{
+    <p>
+        <span>Search Options :</span>
+        @Html.RadioButton("searching", "fName")<span>First Name</span>
+        @Html.RadioButton("searching", "email")<span>Email</span>
+        @Html.RadioButton("searching", "lName")<span>Last Name</span><br />
+
+        @Html.TextBox("ss")
+        <input type="submit" value="Search" class="btn btn-success" />
+    </p>
+   
+    @*<p>
+
+            @Html.TextBox("searching")
+            <input type="submit" value="Search"/>
+        </p>*@
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.last_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.phone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.job_title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gender)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.last_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.job_title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.customer_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.customer_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.customer_id })
+            </td>
+        </tr>
+    }
+
+</table>
